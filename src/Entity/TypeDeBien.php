@@ -21,6 +21,12 @@ class TypeDeBien
      */
     private $nom;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $ref;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,4 +43,23 @@ class TypeDeBien
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRef()
+    {
+        return $this->ref;
+    }
+
+    /**
+     * @param mixed $ref
+     * @return TypeDeBien
+     */
+    public function setRef($ref)
+    {
+        $this->ref = $ref;
+        return $this;
+    }
+
 }
