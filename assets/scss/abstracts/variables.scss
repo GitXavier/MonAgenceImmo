@@ -1,0 +1,58 @@
+//Variables couleurs
+$base_color_1 : #083854;
+$base_color_2: #1697DF;
+$base_color_3: #F2F5F7;
+$color_light_grey: #A1AEB7;
+$color_dark_grey: #505D68;
+$color_black : #232B2C;
+$color_light_black : #3D3D3D;
+$color_green : #32a94c;
+$color_light_blue: #C2D1D9;
+$color_blue_2 : #EEF5F9;
+$color_white : #FFFFFF;
+$color_blue : #009BFF;
+$color_fb : #3b5998;
+$color_linkedin : #0077b5;
+$color_promo : #3593f8;
+$color_youtube: #ff0000;
+$color_orange : #F5A623;
+$color_pink: #E84761;
+$color_danger: #F03F3B;
+$color_succes: #52d061;
+$color_warning: #fdc630;
+$color_info : #cacaca;
+$color_google: #D64638;
+$color_blue_2 : #EEF5F9;
+$color_red : #ED3D35;
+
+//Variables fonts
+$base_font_1 : 'Nunito Sans', sans-serif;
+$base_font_2 : 'Ubuntu', sans-serif;
+$base_font_3 : 'Exo', sans-serif;
+
+//Variables divers
+$variable: null;
+
+//variables bootstrap
+$grid-breakpoints:(
+        xs: 0,
+        sm: 576px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+        xxl:1680px
+);
+$container-max-widths:(
+        sm: 540px,
+        md: 680px,
+        lg: 920px,
+        xl: 1100px,
+        xxl:1400px
+);
+
+$font-size-base: 1rem;
+
+//variable color bootstrap
+
+$primary:       #424B5A;
+$secondary:     $base_color_2;
