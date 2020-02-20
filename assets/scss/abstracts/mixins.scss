@@ -1,0 +1,137 @@
+//px to rem
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+// box-shadow
+@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+// size width=heigth
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+//Placeholder + hover
+@mixin tw_placeholder($color: $base_color_1, $color-hover: lighten($base_color_1, 20%)) {
+  &:-ms-input-placeholder       { color: $color; }
+  &::-webkit-input-placeholder  { color: $color; }
+  &::placeholder                { color: $color; }
+  &:focus:-ms-input-placeholder       { color: $color-hover; }
+  &:focus::-webkit-input-placeholder  { color: $color-hover; }
+  &:focus::placeholder                { color: $color-hover; }
+}
+//Pour faire les fleches dans les divs bulles
+@mixin make-arrow(
+  $box-border-width: 1px,
+  $box-border-style: solid,
+  $box-border-color: #000,
+  $box-background-color: #fff,
+  $arrow-position: top,
+  $arrow-size: 20px) {
+
+  $side-width: $arrow-size + $box-border-width + ($box-border-width / 3);
+  $arrow-calc: ($arrow-size / 2) + $box-border-width;
+
+  position: relative;
+  border-width: $box-border-width;
+  border-style: $box-border-style;
+  border-color: $box-border-color;
+  background-color: $box-background-color;
+
+  &::after{
+    position: absolute;
+    z-index: 1;
+    content: "";
+    width: $arrow-size;
+    height: $arrow-size;
+    background-color: $box-background-color;
+    border-width: 0;
+    border-style: $box-border-style;
+    border-color: $box-border-color;
+    border-bottom: none 0;
+    border-left: none 0;
+    #{$arrow-position}: -($side-width / 2) - ($box-border-width / 2);
+  }
+
+  @if $arrow-position == top {
+    &::after{
+      left: calc(50% - #{$arrow-calc});
+      border-width: $box-border-width;
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+  }
+
+  @if $arrow-position == right {
+    &::after{
+      top: calc(50% - #{$arrow-calc});
+      border-width: $box-border-width;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+
+  @if $arrow-position == bottom {
+    &::after{
+      left: calc(50% - #{$arrow-calc});
+      border-width: $box-border-width;
+      -webkit-transform: rotate(-225deg);
+      -ms-transform: rotate(-225deg);
+      transform: rotate(-225deg);
+    }
+  }
+
+  @if $arrow-position == left {
+    &::after{
+      top: calc(50% - #{$arrow-calc});
+      border-width: $box-border-width;
+      -webkit-transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+      transform: rotate(-135deg);
+    }
+  }
+}
+
+//transition css
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin button ($color:$color_white, $background-color:$base_color_1, $height:50px, $width:350px, $size:14px ){
+  @include font-size($size);
+  height: $height;
+  width: $width;
+  color: $color;
+  background-color: $background-color;
+  border: 1px solid $background-color;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin horizontal_line ($width:80px, $color:#898989){
+  box-sizing: border-box;
+  width: $width;
+  border: 1px solid $color;
+  height: 0;
+}
+
+@mixin link($color:$base_color_1){
+  color:$color;
+  &:hover{
+    color: $color;
+    text-decoration: none;
+  }
+}
