@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="{{ path('propriete.show', {id: propriete.id, slug: propriete.slug}) }}">{{ propriete.titre }}</a>
+                                <a href="{{ path('property.show', {id: propriete.id, slug: propriete.slug}) }}">{{ propriete.titre }}</a>
                             </h5>
                             <p class="card-text">{{ propriete.ville }} ({{ propriete.codePostal }})</p>
                             <div class="text-danger" style="font-weight: bold; font-size: 2rem">{{ propriete.formattedPrix }}</div>

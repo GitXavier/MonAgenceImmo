@@ -7,7 +7,13 @@ use App\Repository\ProprieteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AdminProprieteController extends AbstractController
+
+/**
+ * Class AdminProprieteController
+ * @package App\Controller\Admin
+ * @Route("/admin/property", name="property_")
+ */
+class PropertyController extends AbstractController
 {
     /**
      * @var ProprieteRepository
@@ -15,7 +21,7 @@ class AdminProprieteController extends AbstractController
     private $repository;
 
     /**
-     * AdminProprieteController constructor.
+     * PropertyController constructor.
      * @param ProprieteRepository $repository
      */
     public function __construct(ProprieteRepository $repository)
@@ -24,24 +30,24 @@ class AdminProprieteController extends AbstractController
     }
 
     /**
-     * @Route("/admin", name="admin.propriete.index")
+     * @Route("/index", name="index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
         $proprietes = $this->repository->findAll();
-        return $this->render('admin/propriete/index.html.twig', [
+        return $this->render('Admin/property/index.html.twig', [
             'proprietes' => $proprietes,
         ]);
     }
 
     /**
-     * @Route("/admin/{id}, name="admin.propriete.index")
+     * @Route("/edit/{id}", name="edit")
      */
-    public function edit(Propriete $propriete)
+    public function edit(Propriete $property)
     {
-        return $this->render(':Admin/propriete/edit.html.twig', [
-            'propriete' => $propriete
+        return $this->render(':Admin/property/edit.html.twig', [
+            'property' => $property
         ]);
     }
 }
