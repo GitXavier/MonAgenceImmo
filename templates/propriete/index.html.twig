@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>Nos Biens</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Les derniers biens</h2>
+        <div class="row flex">
+            {% for propriete in proprietes %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('propriete.show', {id: propriete.id, slug: propriete.slug}) }}">{{ propriete.titre }}</a>
+                            </h5>
+                            <p class="card-text">{{ propriete.ville }} ({{ propriete.codePostal }})</p>
+                            <div class="text-danger" style="font-weight: bold; font-size: 2rem">{{ propriete.formattedPrix }}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
