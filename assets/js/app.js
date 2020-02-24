@@ -1,6 +1,15 @@
 import '../scss/app.scss';
 import '../css/app.css';
 
+
+// Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
+import $ from 'jquery';
+
+// Need jQuery and bootstrap ? Install it with "yarn add popper.js --dev".
+import 'bootstrap'; // adds functions to jQuery
+
+
+
 // import './jquery-2.1.0.min';
 // import '../bootstrap/js/bootstrap.min';
 // import './smoothscroll';
@@ -19,6 +28,4 @@ import '../css/app.css';
 // import './jquery.slider';
 // import './custom';
 
-// Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
-// import $ from 'jquery';
 

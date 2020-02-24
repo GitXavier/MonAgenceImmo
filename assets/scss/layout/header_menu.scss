@@ -1,0 +1,142 @@
+.icon-logo-mini{
+  height: 35px;
+  width: 35px;
+  display: flex;
+}
+
+.nav_bar{
+  background-color: #f3f3f3;
+  position: relative;
+  z-index: 1040;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  .acces_compte_client.open_search, .acces_card.open_search{
+    display: none !important;
+
+    @include media-breakpoint-up('sm'){
+      display: flex !important;
+    }
+  }
+
+  .icon-close{
+    @include font-size(14px);
+  }
+  .container{
+    height: 60px;
+
+    @include media-breakpoint-up('sm'){
+      height: 76px;
+    }
+    .vertical_line{
+      height: 48px;
+      border: 0.5px solid $color_light_blue;
+      &.open_search{
+        display:none;
+
+        @include media-breakpoint-up('sm'){
+          display: block;
+        }
+      }
+
+      @include media-breakpoint-up('sm'){
+        height: 58px;
+      }
+    }
+    .wrap_menu{
+      &.open_search{
+        display: none !important;
+
+        @include media-breakpoint-up('md'){
+          display: flex !important;
+        }
+      }
+      @include media-breakpoint-up('xl'){
+        flex: 1 auto;
+      }
+    }
+    .icon_nav_bar{
+      @include font-size(20px);
+      cursor:pointer;
+      position: relative;
+
+      @include media-breakpoint-up('xl'){
+        @include font-size(22px);
+      }
+    }
+    .icon-menu{
+      margin-right: 20px;
+
+      @include media-breakpoint-up('xl'){
+        margin-right: 40px;
+      }
+    }
+    .wrap_lien_menu{
+      width: 42px;
+
+      @include media-breakpoint-up('sm'){
+        width: 50px;
+      }
+      @include media-breakpoint-up('sm'){
+        width: 55px;
+      }
+      @include media-breakpoint-up('xl'){
+        width: 75px;
+      }
+    }
+    .wrap_text_link{
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      &.open_search{
+        display: none !important;
+      }
+
+      @include media-breakpoint-up('xl'){
+        margin-right: 34px;
+      }
+    }
+    .text_link_menu{
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 4px;
+        background: $base_color_1;
+        transform:  translateX(-100%);
+        transition: transform .5s ease;
+      }
+
+      &:after{
+        content: '';
+        position: absolute;
+        transition: transform .5s ease;
+      }
+
+      &:hover:before{
+        transform:  translateX(0);
+      }
+
+      @include media-breakpoint-up('lg'){
+        @include font-size(11px);
+        padding: 15px 13px;
+      }
+
+      @include media-breakpoint-up('xl'){
+        @include font-size(12px);
+      }
+
+      @include media-breakpoint-up('xxl'){
+        @include font-size(13px);
+      }
+    }
+  }
+}
+
