@@ -7,6 +7,7 @@ use App\Repository\ProprieteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class AdminProprieteController extends AbstractController
 {
     /**
@@ -24,7 +25,7 @@ class AdminProprieteController extends AbstractController
     }
 
     /**
-     * @Route("/admin", name="admin.propriete.index")
+     * @Route("/admin", name="admin_propriete_index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index()
@@ -36,12 +37,12 @@ class AdminProprieteController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}, name="admin.propriete.index")
+     * @Route("/admin/{id}", name="admin_propriete_edit")
      */
     public function edit(Propriete $propriete)
     {
-        return $this->render(':Admin/propriete/edit.html.twig', [
-            'propriete' => $propriete
+        return $this->render('admin/propriete/edit.html.twig', [
+            'propriete' => $propriete,
         ]);
     }
 }
