@@ -1,19 +1,4 @@
-/* ==> Header */
 
-.fixed_top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-}
-
-
-
-
-
-
-
-/* ================================================== */
 
 
 
@@ -22,7 +7,7 @@ a {
   -moz-transition: 0.2s;
   -webkit-transition: 0.2s;
   transition: 0.2s;
-  color: #1396e2;
+  color: #083854;
   outline: none !important;
 }
 a:hover {
@@ -366,7 +351,7 @@ ul.list-links li a:hover {
   color: #2a2a2a;
 }
 .link-icon .fa {
-  color: #1396e2;
+  color: #083854;
   margin: 0 10px;
 }
 

@@ -1,42 +1,42 @@
 <div class="nav_bar">
-    <div class="container d-flex align-items-center justify-content-between justify-content-xl-between">
 
+    <div class="container d-flex align-items-center justify-content-between">
 
-
-
-        <!-- Logo-->
-        <nav class="wrap_menu d-flex align-items-center">
-            <span class="icon_nav_bar icon-logo-catalogue base_color_1 openMissive pointer"></span>
-            <a title="" href="#" aria-label="cocuou">
-                    <span class="base_color_1"><img src="{{ asset('build/images/houseLogo.3c82a393.png') }}" height="45px" width="45px" alt=""></span>
-            </a>
+        <!-- Icon Menu Burger -->
+        <nav class="d-lg-none">
+            <span class="icon-enlarge block_btn"></span>
         </nav>
 
+        <!-- Logo-->
+        <a class="navbar-brand" href="#">Mon Agence</a>
+{#        <nav class="d-none d-lg-flex">#}
+{#            <a title="" href="#" aria-label="cocuou">#}
+{#                    <span class="base_color_1"><img src="{{ asset('build/images/houseLogo.3c82a393.png') }}" height="45px" width="45px" alt=""></span>#}
+{#            </a>#}
+{#        </nav>#}
 
         <!-- Text link-->
-        <nav class="wrap_text_link d-none d-lg-flex align-items-center">
+        <nav class="second-menu-bloc d-none d-lg-flex">
             <a href="#" aria-label="accueil" class="text_link_menu text-uppercase">Accueil</a>
             <a href="#" aria-label="nos services" class="text_link_menu text-uppercase">Nos Services</a>
             <a href="#" aria-label="nos biens" class="text_link_menu text-uppercase">Nos biens</a>
             <a href="#" aria-label="contact" class="text_link_menu text-uppercase">Contact</a>
-            <div id="marker"></div>
         </nav>
 
         <!-- icon link-->
-        <nav class="wrap_search d-flex align-items-center">
-            <span class="d-none d-sm-flex vertical_line"></span>
-
-            <a href="#" title="Accéder à la page" aria-label="Accéder à la page" class="wrap_lien_menu d-none d-sm-flex align-items-center justify-content-center" data-tooltip="tooltip" data-placement="bottom">
-                <span class="icon-user base_color_1"></span>
+        <nav>
+            <a href="#" title="Connectez-vous"  class=" d-none d-flex align-items-center justify-content-center" data-tooltip="tooltip" data-placement="top">
+                <span class="icon-menu-size icon-user base_color_1 "></span>
             </a>
-
-            <span class="d-none d-sm-flex vertical_line"></span>
-
-
         </nav>
 
-
-
-
     </div>
+</div>
+
+<!-- Text link Menu Burger-->
+<div class="menu_burger block_hidden">
+    <a href="#" class="text-uppercase">Accueil</a>
+    <a href="#" class="text-uppercase">Nos Services</a>
+    <a href="#" class="text-uppercase">Nos biens</a>
+    <a href="#" class="text-uppercase">Contact</a>
 </div>
