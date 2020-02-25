@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Propriete;
 use App\Repository\ProprieteRepository;
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,15 +16,16 @@ class ProprieteController extends AbstractController
      * @var ProprieteRepository
      */
     private $repository;
+
     /**
      * @var EntityManagerInterface
      */
-    private $em;
+    private $entityManager;
 
-    public function __construct(ProprieteRepository $repository, EntityManagerInterface $em)
+    public function __construct(ProprieteRepository $repository,EntityManagerInterface $entityManager)
     {
-        $this->repository = $repository;
-        $this->em = $em;
+       $this->repository = $repository;
+       $this->entityManager = $entityManager;
     }
 
     /**
@@ -35,7 +35,8 @@ class ProprieteController extends AbstractController
     public function index(): Response
     {
         $proprietes = $this->repository->findLatest();
-        return $this->render('propriete/index.html.twig', [
+
+        return $this->render('property/index.html.twig', [
             'proprietes' => $proprietes
         ]);
     }
@@ -47,13 +48,13 @@ class ProprieteController extends AbstractController
      */
     public function show(Propriete $propriete, string $slug): Response
     {
-       if ($propriete->getSlug() !== $slug) {
-           return $this->redirectToRoute('propriete.show', [
-               'id' => $propriete->getId(),
-               'slug' => $propriete->getSlug()
-           ], 301);
-       }
-        return $this->render('propriete/show.html.twig', [
+        if ($propriete->getSlug() !== $slug) {
+            return $this->redirectToRoute('property.show', [
+                'id' => $propriete->getId(),
+                'slug' => $propriete->getSlug()
+            ], 301);
+        }
+        return $this->render('property/show.html.twig', [
             'property' => $propriete
         ]);
     }

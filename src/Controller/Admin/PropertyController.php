@@ -3,11 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Propriete;
+use App\Form\ProprieteType;
 use App\Repository\ProprieteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
-
 
 
 /**
@@ -16,7 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/admin/property", name="property_")
  */
 class PropertyController extends AbstractController
-
 {
     /**
      * @var ProprieteRepository
@@ -33,30 +31,30 @@ class PropertyController extends AbstractController
     }
 
     /**
-
      * @Route("/index", name="index")
-
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index()
+   public function index()
     {
         $proprietes = $this->repository->findAll();
-        return $this->render('Admin/property/index.html.twig', [
-            'proprietes' => $proprietes,
+        return $this->render('admin/property/index.html.twig', [
+            'properties' => $proprietes,
         ]);
     }
 
     /**
-
      * @Route("/edit/{id}", name="edit")
-
+     * @param Propriete $propriete
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Propriete $property)
+   public function edit(Propriete $propriete)
     {
-
-        return $this->render(':Admin/property/edit.html.twig', [
-            'property' => $property
+        $form = $this->createForm(ProprieteType::class, $propriete);
+        return $this->render('admin/property/edit.html.twig', [
+            'property' => $propriete,
+            'form' => $form->createView()
 
         ]);
     }
+
 }
