@@ -27,6 +27,13 @@ class PropertySearchType extends AbstractType
                     'placeholder' => 'Surface minimale'
                 ]
             ])
+            ->add('city', IntegerType::class, [
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Ville'
+                ]
+            ])
         ;
     }
 
@@ -37,5 +44,10 @@ class PropertySearchType extends AbstractType
             'method' => 'get',
             'csrf_protection' => false
         ]);
+    }
+
+    public function getBlockPrefix()
+    {
+        return '';
     }
 }

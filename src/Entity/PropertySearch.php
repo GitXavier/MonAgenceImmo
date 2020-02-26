@@ -4,6 +4,8 @@
 namespace App\Entity;
 
 
+
+
 class PropertySearch
 {
     /**
@@ -15,6 +17,29 @@ class PropertySearch
      * @var int|null
      */
     private $minSurface;
+
+    /**
+     * @var string|null
+     */
+    private $city;
+
+    /**
+     * @return string|null
+     */
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string|null $city
+     * @return PropertySearch
+     */
+    public function setCity(string $city): PropertySearch
+    {
+        $this->city = $city;
+        return $this;
+    }
 
     /**
      * @return int|null

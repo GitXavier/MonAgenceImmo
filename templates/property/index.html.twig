@@ -1,10 +1,27 @@
 {% extends 'base.html.twig' %}
 
-
+{% block title 'Tous nos biens' %}
 {% block body %}
     <div class="jumbotron text-center">
         <div class="container">
-            <h1>Nos Biens</h1>
+            {{ form_start(form) }}
+            <div class="form-row align-items-end">
+                <div class="col">
+                    {{ form_row(form.minSurface) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.maxPrice) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.city) }}
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                    <button class="btn btn-default">Rechercher</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
         </div>
     </div>
 
@@ -19,7 +36,7 @@
                                 <a href="{{ path('property.show', {id: propriete.id, slug: propriete.slug}) }}">{{ propriete.titre }}</a>
                             </h5>
                             <p class="card-text">{{ propriete.description  | nl2br }}</p>
-                            <p class="card-text">{{ propriete.ville }} ({{ propriete.codePostal }})</p>
+                            <p class="card-text">{{ propriete.surface }} m2 - {{ propriete.ville }} ({{ propriete.codePostal }})</p>
                             <div class="text-danger"
                                  style="font-weight: bold; font-size: 2rem">{{ propriete.formattedPrix }} €
                             </div>
