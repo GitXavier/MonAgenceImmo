@@ -12,18 +12,25 @@
         <h2>Les derniers biens</h2>
         <div class="row flex">
             {% for propriete in proprietes %}
-                <div class="col-3">
-                    <div class="card">
+                <div class="col-md-4">
+                    <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <a href="{{ path('property.show', {id: propriete.id, slug: propriete.slug}) }}">{{ propriete.titre }}</a>
                             </h5>
+                            <p class="card-text">{{ propriete.description  | nl2br }}</p>
                             <p class="card-text">{{ propriete.ville }} ({{ propriete.codePostal }})</p>
-                            <div class="text-danger" style="font-weight: bold; font-size: 2rem">{{ propriete.formattedPrix }} €</div>
+                            <div class="text-danger"
+                                 style="font-weight: bold; font-size: 2rem">{{ propriete.formattedPrix }} €
+                            </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
+        </div>
+
+        <div class="pagination">
+            {{ knp_pagination_render(proprietes) }}
         </div>
     </div>
 
