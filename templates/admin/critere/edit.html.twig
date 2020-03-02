@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h1>Éditer le critère</h1>
+
+        {{ form_start(form) }}
+
+        {{ form_rest(form) }}
+        <button class="btn btn-default">Editer</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

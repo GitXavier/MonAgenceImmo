@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Critere;
 use App\Entity\Propriete;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,6 +21,11 @@ class ProprieteType extends AbstractType
             ->add('chambres')
             ->add('etages')
             ->add('chauffage')
+            ->add('criteres', EntityType::class, [
+                'class' => Critere::class,
+                'choice_label' => 'name',
+                'multiple' => true
+            ])
             ->add('prix')
             ->add('adresse')
             ->add('ville')

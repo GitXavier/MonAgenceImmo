@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h1>Gérer les critères</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for critere in criteres %}
+                <tr>
+                    <td>{{ critere.name }}</td>
+                    <td>
+                        <a href="{{ path('critere_edit', {id: critere.id}) }}" class="btn btn-default">Editer</a>
+                        <form method="post" action="{{ path('critere_delete', {id: critere.id}) }}"
+                              style="display: inline-block" onsubmit="return confirm('Êtes vous sûr ? ')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ critere.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-right">
+            <a href="{{ path('critere_new') }}" class="btn btn-success">Créer un critère</a>
+        </div>
+    </div>
+
+{% endblock %}
