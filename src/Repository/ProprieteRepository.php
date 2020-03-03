@@ -41,6 +41,16 @@ class ProprieteRepository extends ServiceEntityRepository
                 ->setParameter('minsurface', $search->getMinSurface());
         }
 
+        if ($search->getCriteres()->count() > 0) {
+            $k = 0;
+            foreach ($search->getCriteres() as $critere) {
+                $k++;
+                $query = $query
+                    ->andWhere(":critere$k MEMBER OF p.criteres")
+                    ->setParameter("critere$k", $critere);
+            }
+        }
+
         if ($search->getCity()) {
             $query = $query
                 ->andwhere('p.ville = :city')

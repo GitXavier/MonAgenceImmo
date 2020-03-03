@@ -6,6 +6,8 @@ namespace App\Entity;
 
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class PropertySearch
 {
     /**
@@ -17,6 +19,16 @@ class PropertySearch
      * @var int|null
      */
     private $minSurface;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $criteres;
+
+    public function __construct()
+    {
+        $this->criteres = new ArrayCollection();
+    }
 
     /**
      * @var string|null
@@ -77,5 +89,22 @@ class PropertySearch
         return $this;
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getCriteres(): ArrayCollection
+    {
+        return $this->criteres;
+    }
+
+    /**
+     * @param ArrayCollection $criteres
+     * @return PropertySearch
+     */
+    public function setCriteres(ArrayCollection $criteres): PropertySearch
+    {
+        $this->criteres = $criteres;
+        return $this;
+    }
 
 }
