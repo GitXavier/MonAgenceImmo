@@ -26,10 +26,23 @@
             <div class="col-md-5">{{ form_row(form.vendu) }}</div>
         </div>
         {{ form_rest(form) }}
-        <button class="btn btn-default">Editer</button>
+        <button class="btn btn-primary">Editer</button>
         {{ form_end(form) }}
     </div>
 
 {% endblock %}
 
 
+{% block stylesheets %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" rel="stylesheet" />
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
+
+
+    <script>
+        $('select').select2();
+    </script>
+{% endblock %}
