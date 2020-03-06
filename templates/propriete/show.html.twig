@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title property.titre %}
+{% block title propriete.titre %}
 
 {% block body %}
     <div class="jumbotron">
@@ -10,9 +10,9 @@
 
                 </div>
                 <div class="col-md-4">
-                    <h1>{{ property.titre }}</h1>
-                    <h2>{{ property.pieces }} pièces - {{ property.surface }} m2</h2>
-                    <div class="text-danger" style="font-weight: bold; font-size: 2rem">{{ property.formattedPrix }}€
+                    <h1>{{ propriete.titre }}</h1>
+                    <h2>{{ propriete.pieces }} pièces - {{ propriete.surface }} m2</h2>
+                    <div class="text-danger" style="font-weight: bold; font-size: 2rem">{{ propriete.formattedPrix }}€
                     </div>
                     <a href="#" class="btn btn-default">Contacter l'agence</a>
                 </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="container mt-4">
         <p>
-            {{ property.description | nl2br }}
+            {{ propriete.description | nl2br }}
         </p>
 
         <div class="row">
@@ -30,23 +30,23 @@
                 <table class="table table-striped">
                     <tr>
                         <td>Surface habitable</td>
-                        <td>{{ property.surface }} m2</td>
+                        <td>{{ propriete.surface }} m2</td>
                     </tr>
                     <tr>
                         <td>Pièces</td>
-                        <td>{{ property.pieces }}</td>
+                        <td>{{ propriete.pieces }}</td>
                     </tr>
                     <tr>
                         <td>Chambres</td>
-                        <td>{{ property.chambres }}</td>
+                        <td>{{ propriete.chambres }}</td>
                     </tr>
                     <tr>
                         <td>Étage</td>
-                        <td>{{ property.etages }}</td>
+                        <td>{{ propriete.etages }}</td>
                     </tr>
                     <tr>
                         <td>Chauffage</td>
-                        <td>{{ property.chauffage }}</td>
+                        <td>{{ propriete.chauffage }}</td>
                     </tr>
                 </table>
             </div>

@@ -34,9 +34,12 @@
             {% for propriete in proprietes %}
                 <div class="col-md-4">
                     <div class="card mb-4">
+                        {% if propriete.filename %}
+                            <img src="{{ vich_uploader_asset(propriete, 'imageFile') }}" alt="card-img-top" style="width: 100%; height: auto">
+                        {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="{{ path('property.show', {id: propriete.id, slug: propriete.slug}) }}">{{ propriete.titre }}</a>
+                                <a href="{{ path('propriete.show', {id: propriete.id, slug: propriete.slug}) }}">{{ propriete.titre }}</a>
                             </h5>
                             <p class="card-text">{{ propriete.description  | nl2br }}</p>
                             <p class="card-text">{{ propriete.surface }} m2 - {{ propriete.ville }} ({{ propriete.codePostal }})</p>

@@ -7,11 +7,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProprieteRepository")
  * @UniqueEntity("titre")
+ * @Vich\Uploadable
  */
 class Propriete
 {
@@ -21,6 +25,22 @@ class Propriete
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="proprietes", fileNameProperty="imageName")
+     *
+     * @var File|null
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string|null
+     */
+    private $imageName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -85,20 +105,28 @@ class Propriete
      */
     private $vendu = false;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $created_at;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Critere", inversedBy="properties")
      */
     private $criteres;
 
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
+
+
+
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
         $this->criteres = new ArrayCollection();
+
+
     }
 
     public function getId(): ?int
@@ -300,4 +328,59 @@ class Propriete
 
         return $this;
     }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     */
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTimeInterface|null $updatedAt
+     * @return Propriete
+     */
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): Propriete
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+
+
+
 }

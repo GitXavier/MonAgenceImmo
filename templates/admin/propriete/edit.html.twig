@@ -20,13 +20,14 @@
             <div class="col-md-2">{{ form_row(form.etages) }}</div>
         </div>
         <div class="row">
-            <div class="col-md-5">{{ form_row(form.adresse) }}</div>
-            <div class="col-md-5">{{ form_row(form.ville) }}</div>
-            <div class="col-md-5">{{ form_row(form.code_postal) }}</div>
-            <div class="col-md-5">{{ form_row(form.vendu) }}</div>
+            <div class="col-md-2">{{ form_row(form.imageFile) }}</div>
+            <div class="col-md-3">{{ form_row(form.adresse) }}</div>
+            <div class="col-md-2">{{ form_row(form.ville) }}</div>
+            <div class="col-md-2">{{ form_row(form.code_postal) }}</div>
+            <div class="col-md-2">{{ form_row(form.vendu) }}</div>
         </div>
         {{ form_rest(form) }}
-        <button class="btn btn-primary">Editer</button>
+        <button class="btn btn-default">Editer</button>
         {{ form_end(form) }}
     </div>
 

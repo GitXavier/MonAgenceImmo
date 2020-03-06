@@ -21,15 +21,15 @@
             </tr>
             </thead>
             <tbody>
-            {% for property in properties %}
+            {% for propriete in properties %}
                 <tr>
-                    <td>{{ property.titre }}</td>
+                    <td>{{ propriete.titre }}</td>
                     <td>
-                        <a href="{{ path('property_edit', {id: property.id}) }}" class="btn btn-primary">Editer</a>
-                        <form method="post" action="{{ path('property_delete', {id: property.id}) }}"
+                        <a href="{{ path('propriete_edit', {id: propriete.id}) }}" class="btn btn-success">Editer</a>
+                        <form method="post" action="{{ path('propriete_delete', {id: propriete.id}) }}"
                               style="display: inline-block" onsubmit="return confirm('Êtes vous sûr ? ')">
                             <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ property.id) }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ propriete.id) }}">
                             <button class="btn btn-danger">Supprimer</button>
                         </form>
                     </td>
@@ -38,7 +38,7 @@
             </tbody>
         </table>
         <div class="text-right">
-            <a href="{{ path('property_create') }}" class="btn btn-success">Créer un nouveau bien</a>
+            <a href="{{ path('propriete_create') }}" class="btn btn-default">Créer un nouveau bien</a>
         </div>
     </div>
 

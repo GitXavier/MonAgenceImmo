@@ -6,8 +6,10 @@ use App\Entity\Critere;
 use App\Entity\Propriete;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProprieteType extends AbstractType
 {
@@ -25,6 +27,9 @@ class ProprieteType extends AbstractType
                 'class' => Critere::class,
                 'choice_label' => 'name',
                 'multiple' => true
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
             ])
             ->add('prix')
             ->add('adresse')

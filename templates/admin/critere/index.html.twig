@@ -25,7 +25,7 @@
                 <tr>
                     <td>{{ critere.name }}</td>
                     <td>
-                        <a href="{{ path('critere_edit', {id: critere.id}) }}" class="btn btn-default">Editer</a>
+                        <a href="{{ path('critere_edit', {id: critere.id}) }}" class="btn btn-success">Editer</a>
                         <form method="post" action="{{ path('critere_delete', {id: critere.id}) }}"
                               style="display: inline-block" onsubmit="return confirm('Êtes vous sûr ? ')">
                             <input type="hidden" name="_method" value="DELETE">
@@ -38,7 +38,7 @@
             </tbody>
         </table>
         <div class="text-right">
-            <a href="{{ path('critere_new') }}" class="btn btn-success">Créer un critère</a>
+            <a href="{{ path('critere_new') }}" class="btn btn-primary">Créer un critère</a>
         </div>
     </div>
 

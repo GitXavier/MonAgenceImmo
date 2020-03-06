@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class PropertyController
  * @package App\Controller\Admin
- * @Route("/admin/property", name="property_")
+ * @Route("/admin/propriete", name="propriete_")
  */
 class PropertyController extends AbstractController
 {
@@ -45,13 +45,13 @@ class PropertyController extends AbstractController
     public function index()
     {
         $proprietes = $this->repository->findAll();
-        return $this->render('admin/property/index.html.twig', [
+        return $this->render('admin/propriete/index.html.twig', [
             'properties' => $proprietes,
         ]);
     }
 
     /**
-     * @Route("/admin/property/create", name="create")
+     * @Route("/admin/propriete/create", name="create")
      */
     public function add(Request $request)
     {
@@ -63,10 +63,10 @@ class PropertyController extends AbstractController
             $this->entityManager->persist($propriete);
             $this->entityManager->flush();
             $this->addFlash('success', 'Le bien à été crée avec succès.');
-            return $this->redirectToRoute('property_index');
+            return $this->redirectToRoute('propriete_index');
         }
-        return $this->render('admin/property/create.html.twig', [
-            'property' => $propriete,
+        return $this->render('admin/propriete/create.html.twig', [
+            'propriete' => $propriete,
             'form' => $form->createView()
         ]);
     }
@@ -84,11 +84,11 @@ class PropertyController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->flush();
             $this->addFlash('success', 'Le bien à été modifié avec succès');
-            return $this->redirectToRoute('property_index');
+            return $this->redirectToRoute('propriete_index');
         }
 
-        return $this->render('admin/property/edit.html.twig', [
-            'property' => $propriete,
+        return $this->render('admin/propriete/edit.html.twig', [
+            'propriete' => $propriete,
             'form' => $form->createView()
 
         ]);
@@ -105,7 +105,7 @@ class PropertyController extends AbstractController
             $this->entityManager->remove($propriete);
             $this->entityManager->flush();
             $this->addFlash('success', 'Le bien à été supprimé avec succès');
-            return $this->redirectToRoute('property_index');
+            return $this->redirectToRoute('propriete_index');
         }
     }
 }

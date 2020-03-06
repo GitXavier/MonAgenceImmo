@@ -17,6 +17,10 @@ use Doctrine\ORM\QueryBuilder;
  */
 class ProprieteRepository extends ServiceEntityRepository
 {
+    /**
+     * ProprieteRepository constructor.
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Propriete::class);
