@@ -3,9 +3,8 @@ vich_uploader :
 
     mappings :
         proprietes:
-            uri_prefix: /images/proprietes
-            upload_destination: '%kernel.project_dir%/public/images/proprietes'
-            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            uri_prefix: '%app.path.proprietes%'
+            upload_destination: '%kernel.project_dir%/public%app.path.proprietes%'
 
             inject_on_load: false
             delete_on_update: true

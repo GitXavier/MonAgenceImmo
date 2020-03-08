@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -37,10 +38,16 @@ class Propriete
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @var string|null
      */
     private $imageName;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var DateTimeInterface|null
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -111,12 +118,6 @@ class Propriete
      */
     private $criteres;
 
-    /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var \DateTimeInterface|null
-     */
-    private $updatedAt;
 
 
 
@@ -289,12 +290,12 @@ class Propriete
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt(DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
 
@@ -337,12 +338,14 @@ class Propriete
      * during Doctrine hydration.
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     * @throws \Exception
      */
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
 
-        if ($this->imageFile instanceof UploadedFile) {
+//        if ($this->imageFile instanceof UploadedFile) {
+        if ($imageFile) {
             $this->updatedAt = new \DateTime('now');
         }
     }
@@ -363,18 +366,18 @@ class Propriete
     }
 
     /**
-     * @return \DateTimeInterface|null
+     * @return DateTimeInterface|null
      */
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updatedAt;
     }
 
     /**
-     * @param \DateTimeInterface|null $updatedAt
+     * @param DateTimeInterface|null $updatedAt
      * @return Propriete
      */
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): Propriete
+    public function setUpdatedAt(?DateTimeInterface $updatedAt): Propriete
     {
         $this->updatedAt = $updatedAt;
         return $this;
