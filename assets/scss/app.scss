@@ -3,6 +3,10 @@
 @import "abstracts/variables";
 
 @import "~bootstrap";
+// app.scss -- I'm using Wepback sass-loader
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+
 
 @import "base/base";
 
