@@ -34,7 +34,7 @@
             {% for propriete in proprietes %}
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        {% if propriete.filename %}
+                        {% if propriete.imagename %}
                             <img src="{{ vich_uploader_asset(propriete, 'imageFile') }}" alt="card-img-top" style="width: 100%; height: auto">
                         {% endif %}
                         <div class="card-body">
