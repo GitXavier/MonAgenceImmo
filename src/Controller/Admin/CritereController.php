@@ -40,6 +40,7 @@ class CritereController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($critere);
             $entityManager->flush();
+            $this->addFlash('success', 'Le critère à été crée avec succès.');
 
             return $this->redirectToRoute('critere_index');
         }
@@ -70,6 +71,7 @@ class CritereController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Le critère à été modifié avec succès');
 
             return $this->redirectToRoute('critere_index');
         }
@@ -89,6 +91,7 @@ class CritereController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($critere);
             $entityManager->flush();
+            $this->addFlash('success', 'Le critère à été supprimé avec succès');
         }
 
         return $this->redirectToRoute('critere_index');

@@ -30,13 +30,14 @@ class Propriete
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @var string|null
+     * @var string
      */
     private $imageName;
 
     /**
      * @Vich\UploadableField(mapping="product_images", fileNameProperty="imageName")
-     * @var File|null
+     * @Assert\Image(mimeTypes="image/jpeg")
+     * @var File
      */
     private $imageFile;
 

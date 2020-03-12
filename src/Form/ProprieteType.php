@@ -25,10 +25,11 @@ class ProprieteType extends AbstractType
             ->add('chauffage')
             ->add('criteres', EntityType::class, [
                 'class' => Critere::class,
+                'required' => false,
                 'choice_label' => 'name',
                 'multiple' => true
             ])
-            ->add('imageFile', VichImageType::class, [
+            ->add('imageFile', FileType::class, [
                 'required' => false,
             ])
             ->add('prix')

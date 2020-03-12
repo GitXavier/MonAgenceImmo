@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container mt-4">
-        <h1>Editer le bien</h1>
+        <h1>Créer un nouveau bien</h1>
 
         {{ form_start(form) }}
         <div class="row">
@@ -19,10 +19,11 @@
             <div class="col-md-2">{{ form_row(form.etages) }}</div>
         </div>
         <div class="row">
-            <div class="col-md-5">{{ form_row(form.adresse) }}</div>
-            <div class="col-md-5">{{ form_row(form.ville) }}</div>
-            <div class="col-md-5">{{ form_row(form.code_postal) }}</div>
-            <div class="col-md-5">{{ form_row(form.vendu) }}</div>
+            <div class="col-md-2">{{ form_row(form.imageFile) }}</div>
+            <div class="col-md-3">{{ form_row(form.adresse) }}</div>
+            <div class="col-md-2">{{ form_row(form.ville) }}</div>
+            <div class="col-md-2">{{ form_row(form.code_postal) }}</div>
+            <div class="col-md-2">{{ form_row(form.vendu) }}</div>
         </div>
         {{ form_rest(form) }}
         <button class="btn btn-success">Ajouter</button>
