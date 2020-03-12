@@ -11,8 +11,12 @@ import './include/_showBlock';
 
 
 
+
+
 // Need jQuery and bootstrap ? Install it with "yarn add popper.js --dev".
 import 'bootstrap'; // adds functions to jQuery
+
+
 
 
 
