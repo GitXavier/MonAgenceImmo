@@ -69,7 +69,7 @@ class userController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'Utilisateur modifié');
+            $this->addFlash('success', 'Utilisateur modifié avec succès');
 
             return $this->redirectToRoute('users_users');
         }
