@@ -6,6 +6,7 @@ use App\Entity\Propriete;
 use App\Form\ProprieteType;
 use App\Repository\ProprieteRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,6 +24,7 @@ class PropertyController extends AbstractController
      * @var ProprieteRepository
      */
     private $repository;
+
     /**
      * @var EntityManagerInterface
      */
@@ -42,6 +44,7 @@ class PropertyController extends AbstractController
     /**
      * @Route("/index", name="index")
      * @return \Symfony\Component\HttpFoundation\Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index()
     {
@@ -53,6 +56,7 @@ class PropertyController extends AbstractController
 
     /**
      * @Route("/admin/propriete/create", name="create")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function add(Request $request)
     {
@@ -76,6 +80,7 @@ class PropertyController extends AbstractController
      * @Route("/edit/{id}", name="edit", methods="GET|POST")
      * @param Propriete $propriete
      * @return \Symfony\Component\HttpFoundation\Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Propriete $propriete, Request $request)
     {
@@ -99,6 +104,7 @@ class PropertyController extends AbstractController
      * @Route("/edit/{id}", name="delete", methods="DELETE")
      * @param Propriete $propriete
      * @return \Symfony\Component\HttpFoundation\Response
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Propriete $propriete, Request $request)
     {

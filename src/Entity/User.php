@@ -112,11 +112,15 @@ class User implements UserInterface, \Serializable
 
      public function getRoles(): array
     {
-        //return $this->roles;
-        //return ['Role_USER'];
         $roles = $this->roles;
         $roles[] = 'ROLE_USER';
         return  array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
     }
 
 

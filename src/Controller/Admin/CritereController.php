@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Critere;
 use App\Form\CritereType;
 use App\Repository\CritereRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,6 +20,7 @@ class CritereController extends AbstractController
 {
     /**
      * @Route("/", name="critere_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(CritereRepository $critereRepository): Response
     {
@@ -29,6 +31,7 @@ class CritereController extends AbstractController
 
     /**
      * @Route("/new", name="critere_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -53,6 +56,7 @@ class CritereController extends AbstractController
 
     /**
      * @Route("/{id}", name="critere_show", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function show(Critere $critere): Response
     {
@@ -63,6 +67,7 @@ class CritereController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="critere_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Critere $critere): Response
     {
@@ -84,6 +89,7 @@ class CritereController extends AbstractController
 
     /**
      * @Route("/{id}", name="critere_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Critere $critere): Response
     {
