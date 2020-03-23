@@ -296,7 +296,6 @@ blockquote figure {
     vertical-align: middle;
 }
 blockquote figure .image {
-    /*background-color: #5a5a5a;*/
     background-color: transparent;
     height: 180px;
     position: relative;

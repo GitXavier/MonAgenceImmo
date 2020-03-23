@@ -6,6 +6,8 @@
 
     </header>
 
-    {% include 'Header/include/_header_img.html.twig' %}
+    {% if app.request.uri == 'http://immo.localhost/' %}
+        {% include 'Header/include/_header_img.html.twig' %}
+    {% endif %}
 
 </div><!-- /.navigation -->
