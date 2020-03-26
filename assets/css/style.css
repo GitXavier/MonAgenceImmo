@@ -25,7 +25,8 @@ a {
     -moz-transition: 0.2s;
     -webkit-transition: 0.2s;
     transition: 0.2s;
-    color: #083854;
+    /*color: #083854;*/
+    color: #2ea6c1;
     outline: none !important;
 }
 
@@ -117,7 +118,8 @@ p {
     line-height: 1;
     text-transform: none;
     content: "\ea42";
-    color: #1396e2;
+    /*color: #1396e2;*/
+    color: #2ea6c1;
     left: 0;
     font-size: 18px;
     margin-left: 10px;
@@ -202,6 +204,7 @@ p {
     width: 100%;
     position: relative;
     top: 0;
+    border-radius: 10%;
 }
 .property .overlay {
     -moz-transition: 0.4s;
@@ -222,7 +225,8 @@ p {
 }
 
 .property .overlay .additional-info {
-    background-color: #073855;
+    /*background-color: #073855;*/
+    background-color: #2ea6c1;
     display: table;
     height: 30px;
     list-style: none;
@@ -242,7 +246,7 @@ p {
 }
 
 .property .overlay .additional-info li header {
-    opacity: 0.5;
+    opacity: 0.9;
     font-size: 11px;
 }
 .property .overlay .additional-info li figure {
@@ -460,4 +464,25 @@ blockquote .cite footer {
 }
 #page-footer .inner #footer-copyright a {
     color: #fff;
+}
+
+/* ================================= */
+/* ============  test=============== */
+/* ================================= */
+
+.parallax {
+
+
+
+    /* The image used */
+    background-image: url("../images/4.jpg");
+
+    /* Set a specific height */
+    min-height: 600px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
