@@ -19,6 +19,8 @@
     },
     "dependencies": {
         "jquery": "^3.4.1",
+        "scrollreveal": "^4.0.6",
         "slick-carousel": "^1.8.1"
-    }
+    },
+    "version": "0.0.0"
 }
