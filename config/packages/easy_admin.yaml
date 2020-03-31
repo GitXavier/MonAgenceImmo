@@ -1,0 +1,59 @@
+easy_admin:
+    # Définit le nom de l'interface d'administration
+    site_name: 'Dashboard Mon agence'
+    # Définit l'affichage de l'utilisateur
+    user:
+      display_name: true
+      display_avatar: true
+      name_property_path: 'username'
+    design:
+      # Lignes utiles pour CKEditor
+      form_theme:
+        - "@EasyAdmin/form/bootstrap_4.html.twig"
+        - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
+      # Lignes pour définir notre menu
+      menu:
+        - { label: 'Menu' }
+        - label: 'Les biens'
+          children:
+            - { entity: 'Propriete', label: 'Liste des biens', icon: 'th-list' }
+            - { entity: 'Propriete', label: 'Nouveau bien', icon: 'plus', params: {action: 'new' }}
+        - label: 'Les critères'
+          children:
+            - { entity: 'Critere', label: 'Liste des critères', icon: 'tag' }
+            - { entity: 'Critere', label: 'Nouveau critères', icon: 'plus', params: {action: 'new' }}
+        - label: 'Utilisateurs'
+          children:
+            - { entity: 'User', label: 'Liste des utilisateurs', icon: 'user' }
+    formats:
+      # Ici on définit le format des dates
+      datetime: 'd/m/Y à H:i'
+    entities:
+      # List the entity class name you want to manage
+     Propriete:
+        class: App\Entity\Propriete
+        list:
+          fields:
+            - id
+            - published
+            - titre
+            - vendu
+            - { property: 'image_name', label: 'Image', type: 'image', base_path: '%app.path.product_images%' }
+            #- { property: 'created_at', label: 'Date de création' }
+          #sort: ['created_at', 'desc']
+     Critere:
+        class: App\Entity\Critere
+     User:
+        class: App\Entity\User
+        list:
+          fields:
+            - id
+            - username
+            - email
+            - roles
+
+
+
+
+
+

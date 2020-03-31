@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Critere;
 use App\Entity\Propriete;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -17,7 +18,7 @@ class ProprieteType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('description')
+            ->add('description', CKEditorType::class)
             ->add('surface')
             ->add('pieces')
             ->add('chambres')
@@ -37,6 +38,7 @@ class ProprieteType extends AbstractType
             ->add('ville')
             ->add('code_postal')
             ->add('vendu')
+            ->add('published')
         ;
     }
 

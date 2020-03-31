@@ -32,6 +32,7 @@ security:
     - { path: ^/admin, roles: [IS_AUTHENTICATED_FULLY, ROLE_ADMIN] }
     - { path: ^/admin, roles: ROLE_ADMIN }
     - { path: ^/admin, roles: ROLE_SUPER }
+    - { path: ^/profile, roles: ROLE_COLLA }
     - { path: ^/profile, roles: ROLE_USER }
     #- { path: '^/login$', roles: IS_AUTHENTICATED_ANONYMOUSLY }
     #- { path: '^/admin/users', roles: ROLE_SUPER_ADMIN }
@@ -41,7 +42,7 @@ security:
     ROLE_COLLA:       ROLE_COLLA
     ROLE_SUPER:       ROLE_SUPER
     ROLE_ADMIN:       [ROLE_USER, ROLE_COLLA, ROLE_SUPER]
-    ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN]
+    #ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN]
 
     #provider: users_in_memory
 

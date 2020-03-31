@@ -6,12 +6,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
-use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProprieteRepository")
@@ -30,7 +30,7 @@ class Propriete
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @var string
+     * @var string|null
      */
     private $imageName;
 
@@ -42,10 +42,20 @@ class Propriete
     private $imageFile;
 
     /**
+     * @var \DateTime $updatedAt
+     *
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime")
-     * @var \DateTimeInterface|null
      */
     private $updatedAt;
+
+    /**
+     * @var \DateTime $createdAt
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -116,6 +126,17 @@ class Propriete
      */
     private $criteres;
 
+    /**
+     * @Gedmo\Slug(fields={"titre"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $published;
+
 
     public function __construct()
     {
@@ -123,7 +144,11 @@ class Propriete
         $this->criteres = new ArrayCollection();
         $this->updatedAt = new \DateTime();
 
+    }
 
+    public function __toString()
+    {
+        return $this->titre;
     }
 
     public function getId(): ?int
@@ -291,14 +316,7 @@ class Propriete
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
-    {
-        $this->created_at = $created_at;
-
-        return $this;
-    }
-
-    /**
+     /**
      * @return Collection|Critere[]
      */
     public function getCriteres(): Collection
@@ -371,16 +389,16 @@ class Propriete
         return $this->updatedAt;
     }
 
-    /**
-     * @param \DateTimeInterface|null $updatedAt
-     * @return Propriete
-     */
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): Propriete
+    public function getPublished(): ?bool
     {
-        $this->updatedAt = $updatedAt;
+        return $this->published;
+    }
+
+    public function setPublished(bool $published): self
+    {
+        $this->published = $published;
+
         return $this;
     }
 
-
-
-}
+ }
