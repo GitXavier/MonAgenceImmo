@@ -21,8 +21,8 @@
             <a href="#" aria-label="nos services" class="text_link_menu text-uppercase">Nos Services</a>
             <a href="{{ path('propriete') }}" aria-label="nos biens" class="text_link_menu text-uppercase">Nos biens</a>
             <a href="#" aria-label="contact" class="text_link_menu text-uppercase">Contact</a>
-            {% if is_granted('ROLE_SUPER') %}
-                <a href="{{ path('admin_index') }}" aria-label="administration" class="text_link_menu text-uppercase">Administration</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('easyadmin') }}" aria-label="administration" class="text_link_menu text-uppercase">Administration</a>
             {% endif %}
         </nav>
 

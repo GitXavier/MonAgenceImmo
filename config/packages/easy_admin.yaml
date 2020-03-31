@@ -41,8 +41,32 @@ easy_admin:
             - { property: 'image_name', label: 'Image', type: 'image', base_path: '%app.path.product_images%' }
             #- { property: 'created_at', label: 'Date de création' }
           #sort: ['created_at', 'desc']
+        form:
+          fields:
+            - titre
+            - surface
+            - pieces
+            - chambres
+            - chauffage
+            - etages
+            - adresse
+            - ville
+            - code_postal
+            - prix
+            - published
+            - { property: 'description', type: 'fos_ckeditor', type_options: { config_name: 'main_config' }}
+            - { property: 'imageFile', type: 'vich_image', label: 'Image'}
+            - { property: 'criteres', type: 'entity', label: 'Critères', type_options: { class: 'App\Entity\Critere', multiple: true,by_reference: false, attr: { data-widget: 'select2' }}}
      Critere:
         class: App\Entity\Critere
+        list:
+          fields:
+            - id
+            - name
+        form:
+          fields:
+            - name
+          sort: ['name', 'asc']
      User:
         class: App\Entity\User
         list:
@@ -50,7 +74,12 @@ easy_admin:
             - id
             - username
             - email
-            - roles
+            - { property: 'roles', label: 'Rôles', type: json_array }
+        form:
+          fields:
+            - username
+            - email
+            - { property: 'roles', label: 'Rôles', type: choice, type_options: { expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER', 'Administrateur':'ROLE_ADMIN' }}}
 
 
 
