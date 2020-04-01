@@ -33,53 +33,81 @@ easy_admin:
      Propriete:
         class: App\Entity\Propriete
         list:
+          collapse_actions: true
+          actions: ['show', 'edit', 'delete']
+          batch_actions: ['delete']
+          title: 'La liste des biens'
+          filters: ['vendu']
           fields:
             - id
-            - published
-            - titre
             - vendu
+            - titre
             - { property: 'image_name', label: 'Image', type: 'image', base_path: '%app.path.product_images%' }
             #- { property: 'created_at', label: 'Date de création' }
           #sort: ['created_at', 'desc']
+        show:
+          fields:
+            - titre
+            - { property: 'image_name', label: 'Image', type: 'image', base_path: '%app.path.product_images%', css_class: 'col-lg-5' }
+            - { property: 'attachments', template: 'images.html.twig', css_class: 'col-lg-5'}
+            - { property: 'description', type: 'raw' }
+            - vendu
+
         form:
           fields:
+            - { type: 'group', icon: 'pencil', label: 'Caractéristiques du bien' }
             - titre
             - surface
             - pieces
             - chambres
             - chauffage
             - etages
+            - { property: 'description', type: 'fos_ckeditor', type_options: { config_name: 'main_config' }}
+            - { type: 'group', icon: 'clip', label: 'Image', css_class: 'col-lg-5' }
+            - { property: 'imageFile', type: 'vich_image', label: 'Image'}
+            - { property: 'attachments', type: 'collection', type_options: { entry_type: 'App\Form\AttachmentType', by_reference: false }}
+            #- created_at
+            - { property: 'criteres', type: 'entity', label: 'Critères', type_options: { class: 'App\Entity\Critere', multiple: true,by_reference: false, attr: { data-widget: 'select2' }}}
+            - { type: 'group', icon: 'pencil', label: 'Localisation du bien' }
             - adresse
             - ville
             - code_postal
             - prix
-            - published
-            - { property: 'description', type: 'fos_ckeditor', type_options: { config_name: 'main_config' }}
-            - { property: 'imageFile', type: 'vich_image', label: 'Image'}
-            - { property: 'criteres', type: 'entity', label: 'Critères', type_options: { class: 'App\Entity\Critere', multiple: true,by_reference: false, attr: { data-widget: 'select2' }}}
+
      Critere:
         class: App\Entity\Critere
         list:
+          collapse_actions: true
+          actions: ['edit', 'delete']
+          batch_actions: ['delete']
+          title: 'La liste des critères'
           fields:
             - id
             - name
         form:
           fields:
+            - { type: 'group', icon: 'pencil', label: 'Édition du critère' }
             - name
           sort: ['name', 'asc']
      User:
         class: App\Entity\User
         list:
+          collapse_actions: true
+          actions: ['edit', 'delete']
+          batch_actions: ['delete']
+          title: 'La liste des utilisateurs'
           fields:
             - id
             - username
             - email
             - { property: 'roles', label: 'Rôles', type: json_array }
-        form:
-          fields:
-            - username
-            - email
-            - { property: 'roles', label: 'Rôles', type: choice, type_options: { expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER', 'Administrateur':'ROLE_ADMIN' }}}
+        #form:
+          #fields:
+            #- { type: 'group', icon: 'pencil', label: 'Édition utilisateur' }
+            #- username
+            #- email
+            #- { type: 'group', icon: 'th-list', label: 'Attribution rôles' }
+            #- { property: 'roles', label: 'Rôles', type: choice, type_options: { expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER', 'Administrateur':'ROLE_ADMIN' }}}
 
 
 

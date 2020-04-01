@@ -42,6 +42,11 @@ class Propriete
     private $imageFile;
 
     /**
+     * @ORM\OneToMany(targetEntity="Attachment", mappedBy="propriete", cascade={"persist"})
+     */
+    private $attachments;
+
+    /**
      * @var \DateTime $updatedAt
      *
      * @Gedmo\Timestampable(on="update")
@@ -132,21 +137,15 @@ class Propriete
      */
     private $slug;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $published;
-
-
     public function __construct()
     {
-        $this->created_at = new \DateTime();
         $this->criteres = new ArrayCollection();
+        $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
-
+        $this->attachments = new ArrayCollection();
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->titre;
     }
@@ -313,10 +312,10 @@ class Propriete
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-     /**
+    /**
      * @return Collection|Critere[]
      */
     public function getCriteres(): Collection
@@ -389,16 +388,58 @@ class Propriete
         return $this->updatedAt;
     }
 
-    public function getPublished(): ?bool
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        return $this->published;
-    }
-
-    public function setPublished(bool $published): self
-    {
-        $this->published = $published;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
- }
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Attachment[]
+     */
+    public function getAttachments(): Collection
+    {
+        return $this->attachments;
+    }
+
+    public function addAttachment(Attachment $attachment): self
+    {
+        if (!$this->attachments->contains($attachment)) {
+            $this->attachments[] = $attachment;
+            $attachment->setPropriete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAttachment(Attachment $attachment): self
+    {
+        if ($this->attachments->contains($attachment)) {
+            $this->attachments->removeElement($attachment);
+            // set the owning side to null (unless already changed)
+            if ($attachment->getPropriete() === $this) {
+                $attachment->setPropriete(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+}

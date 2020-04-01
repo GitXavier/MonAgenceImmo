@@ -18,7 +18,7 @@ class ProprieteType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('description', CKEditorType::class)
+            ->add('description',CKEditorType::class)
             ->add('surface')
             ->add('pieces')
             ->add('chambres')
@@ -38,7 +38,7 @@ class ProprieteType extends AbstractType
             ->add('ville')
             ->add('code_postal')
             ->add('vendu')
-            ->add('published')
+
         ;
     }
 

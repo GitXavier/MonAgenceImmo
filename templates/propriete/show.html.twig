@@ -8,9 +8,11 @@
             <div class="row">
                 <div class="col-md-8">
                     {% if propriete.imagename %}
-                        <img src="{{ vich_uploader_asset(propriete, 'imageFile') | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height: auto">
+                        <img src="{{ vich_uploader_asset(propriete, 'imageFile') | imagine_filter('medium') }}"
+                             alt="card-img-top" style="width: 100%; height: auto">
                     {% else %}
-                        <img src="{{ '/uploads/images/proprietes/empty.jpg' | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height: auto">
+                        <img src="{{ '/uploads/images/proprietes/empty.jpg' | imagine_filter('medium') }}"
+                             alt="card-img-top" style="width: 100%; height: auto">
                     {% endif %}
                 </div>
                 <div class="col-md-4">
@@ -24,9 +26,12 @@
         </div>
     </div>
     <div class="container mt-4">
-        <p>
-            {{ propriete.description | nl2br }}
-        </p>
+
+        <div class="col-md-12">
+            <p>
+                {{ propriete.description | raw }}
+            </p>
+        </div>
 
         <div class="row">
             <div class="col-md-8">
@@ -55,10 +60,10 @@
                 </table>
             </div>
             <div class="col-md-4">
-                <h2>Spécificités</h2>
+                <h2>Critères</h2>
                 <ul class="list-group">
                     {% for critere in propriete.criteres %}
-                    <li class="list-group-item">{{ critere.name }}</li>
+                        <li class="list-group-item">{{ critere.name }}</li>
                     {% endfor %}
                 </ul>
             </div>
