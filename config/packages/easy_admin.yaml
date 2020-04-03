@@ -37,7 +37,7 @@ easy_admin:
           batch_actions: ['delete']
           title: 'La liste des biens'
           filters: ['vendu']
-          fields: ['titre', 'vendu', { property: 'createdAt', label: 'Date de création' }, {property: 'user.email', label: 'Utilisateur', permission: 'ROLE_ADMIN'}, { property: 'image_name', type: 'image', base_path: '%app.path.product_images%' }]
+          fields: ['titre', 'vendu', { property: 'createdAt', label: 'Date de création' }, { property: 'user.email', label: 'Utilisateur', permission: 'ROLE_ADMIN' }, { property: 'image_name', type: 'image', base_path: '%app.path.product_images%' }]
           sort: ['createdAt', 'desc']
 
         show:
@@ -100,13 +100,13 @@ easy_admin:
             - username
             - email
             - { property: 'roles', label: 'Rôles', type: json_array }
-        form:
-          fields:
-            - { type: 'group', icon: 'pencil', label: 'Édition utilisateur' }
-            - username
-            - email
-            - { type: 'group', icon: 'th-list', label: 'Attribution rôles' }
-            - { property: 'roles', label: 'Rôles', type: choice, type_options: { expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER', 'Administrateur':'ROLE_ADMIN' }}}
+        #form:
+          #fields:
+            #- { type: 'group', icon: 'pencil', label: 'Édition utilisateur' }
+            #- username
+            #- email
+            #- { type: 'group', icon: 'th-list', label: 'Attribution rôles' }
+            #- { property: 'roles', label: 'Rôles', type: choice, type_options: { expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER', 'Administrateur':'ROLE_ADMIN' }}}
 
 
 

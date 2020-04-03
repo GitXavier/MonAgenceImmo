@@ -137,6 +137,11 @@ class Propriete
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="proprietes")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->criteres = new ArrayCollection();
@@ -343,7 +348,6 @@ class Propriete
         return $this;
     }
 
-
     /**
      * @return string|null
      */
@@ -440,6 +444,16 @@ class Propriete
         return $this;
     }
 
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+        return $this;
+    }
 
 
 }

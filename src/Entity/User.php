@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -52,10 +54,15 @@ class User implements UserInterface, \Serializable
      */
     private $roles = [];
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Propriete", mappedBy="user")
+     */
+    private $proprietes;
+
     public function __construct()
     {
-        $this->roles = (['ROLE_USER']);
-        //$this->roles = (['Role_ADMIN']);
+        //$this->roles = (['ROLE_USER']);
+        $this->proprietes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -86,6 +93,7 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
+
     public function getEmail(): ?string
     {
         return $this->email;
@@ -114,12 +122,14 @@ class User implements UserInterface, \Serializable
     {
         $roles = $this->roles;
         $roles[] = 'ROLE_USER';
+
         return  array_unique($roles);
     }
 
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
         return $this;
     }
 
@@ -165,5 +175,49 @@ class User implements UserInterface, \Serializable
             $this->username,
             $this->password
             ) = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    /**
+     * @return Collection|Propriete[]
+     */
+    public function getProprietes(): Collection
+    {
+        return $this->proprietes;
+    }
+
+    public function addPropriete(Propriete $propriete): self
+    {
+        if (!$this->proprietes->contains($propriete)) {
+            $this->proprietes[] = $propriete;
+            $propriete->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(Propriete $propriete): self
+    {
+        if ($this->proprietes->contains($propriete)) {
+            $this->proprietes->removeElement($propriete);
+            // set the owning side to null (unless already changed)
+            if ($propriete->getUser() === $this) {
+                $propriete->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function removePropriete(Propriete $propriete): self
+    {
+        if ($this->proprietes->contains($propriete)) {
+            $this->proprietes->removeElement($propriete);
+            // set the owning side to null (unless already changed)
+            if ($propriete->getUser() === $this) {
+                $propriete->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

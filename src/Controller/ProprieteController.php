@@ -26,10 +26,11 @@ class ProprieteController extends AbstractController
      */
     private $entityManager;
 
-    public function __construct(ProprieteRepository $repository,EntityManagerInterface $entityManager)
+    public function __construct(ProprieteRepository $repository,EntityManagerInterface $entityManager, $twig)
     {
        $this->repository = $repository;
        $this->entityManager = $entityManager;
+       $this->twig = $twig;
     }
 
     /**
