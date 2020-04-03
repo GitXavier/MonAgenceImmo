@@ -46,6 +46,7 @@ easy_admin:
             - { property: 'image_name', label: 'Image', type: 'image', base_path: '%app.path.product_images%', css_class: 'col-lg-5' }
             - { property: 'attachments', template: 'images.html.twig', css_class: 'col-lg-5'}
             - { property: 'description', type: 'raw' }
+            - criteres
             - vendu
         edit:
           help: 'Bonjour'
@@ -81,7 +82,6 @@ easy_admin:
           batch_actions: ['delete']
           title: 'La liste des critères'
           fields:
-            - id
             - name
         form:
           fields:
@@ -92,22 +92,21 @@ easy_admin:
         class: App\Entity\User
         list:
           item_permission: 'ROLE_ADMIN'
-          #collapse_actions: true
-          #actions: ['edit', 'delete']
-          #batch_actions: ['delete']
-          #title: 'La liste des utilisateurs'
-          #fields:
-            #- id
-            #- username
-            #- email
-            #- { property: 'roles', label: 'Rôles', type: json_array }
-        #form:
-          #fields:
-            #- { type: 'group', icon: 'pencil', label: 'Édition utilisateur' }
-            #- username
-            #- email
-            #- { type: 'group', icon: 'th-list', label: 'Attribution rôles' }
-            #- { property: 'roles', label: 'Rôles', type: choice, type_options: { expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER', 'Administrateur':'ROLE_ADMIN' }}}
+          collapse_actions: true
+          actions: ['edit', 'delete']
+          batch_actions: ['delete']
+          title: 'La liste des utilisateurs'
+          fields:
+            - username
+            - email
+            - { property: 'roles', label: 'Rôles', type: json_array }
+        form:
+          fields:
+            - { type: 'group', icon: 'pencil', label: 'Édition utilisateur' }
+            - username
+            - email
+            - { type: 'group', icon: 'th-list', label: 'Attribution rôles' }
+            - { property: 'roles', label: 'Rôles', type: choice, type_options: { expanded: true, multiple: true, choices: {'Utilisateur':'ROLE_USER', 'Administrateur':'ROLE_ADMIN' }}}
 
 
 

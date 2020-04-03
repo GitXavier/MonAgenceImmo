@@ -127,7 +127,7 @@ class Propriete
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Critere", inversedBy="properties")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Critere", inversedBy="properties", cascade={"persist"})
      */
     private $criteres;
 
