@@ -17,14 +17,13 @@ easy_admin:
         - label: 'Les biens'
           children:
             - { entity: 'Propriete', label: 'Liste des biens', icon: 'th-list' }
-            - { entity: 'Propriete', label: 'Nouveau bien', icon: 'plus', params: {action: 'new' }}
+            - { entity: 'Propriete', label: 'Nouveau bien', icon: 'plus', params: {action: 'new' }, permission: 'ROLE_ADMIN'}
         - label: 'Les critères'
           children:
             - { entity: 'Critere', label: 'Liste des critères', icon: 'tag' }
             - { entity: 'Critere', label: 'Nouveau critères', icon: 'plus', params: {action: 'new' }}
-        - label: 'Utilisateurs'
-          children:
-            - { entity: 'User', label: 'Liste des utilisateurs', icon: 'user' }
+        - { label: "Paramètres"}
+        - { entity: 'User', icon: 'user', permission: 'ROLE_ADMIN' }
     formats:
       # Ici on définit le format des dates
       datetime: 'd/m/Y à H:i'
@@ -38,13 +37,9 @@ easy_admin:
           batch_actions: ['delete']
           title: 'La liste des biens'
           filters: ['vendu']
-          fields:
-            - id
-            - vendu
-            - titre
-            - { property: 'image_name', label: 'Image', type: 'image', base_path: '%app.path.product_images%' }
-            #- { property: 'created_at', label: 'Date de création' }
-          #sort: ['created_at', 'desc']
+          fields: ['titre', 'vendu', { property: 'createdAt', label: 'Date de création' }, {property: 'user.email', label: 'Utilisateur', permission: 'ROLE_ADMIN'}, { property: 'image_name', type: 'image', base_path: '%app.path.product_images%' }]
+          sort: ['createdAt', 'desc']
+
         show:
           fields:
             - titre
@@ -52,6 +47,10 @@ easy_admin:
             - { property: 'attachments', template: 'images.html.twig', css_class: 'col-lg-5'}
             - { property: 'description', type: 'raw' }
             - vendu
+        edit:
+          help: 'Bonjour'
+        new:
+          item_permission: 'ROLE_ADMIN'
 
         form:
           fields:
@@ -92,15 +91,16 @@ easy_admin:
      User:
         class: App\Entity\User
         list:
-          collapse_actions: true
-          actions: ['edit', 'delete']
-          batch_actions: ['delete']
-          title: 'La liste des utilisateurs'
-          fields:
-            - id
-            - username
-            - email
-            - { property: 'roles', label: 'Rôles', type: json_array }
+          item_permission: 'ROLE_ADMIN'
+          #collapse_actions: true
+          #actions: ['edit', 'delete']
+          #batch_actions: ['delete']
+          #title: 'La liste des utilisateurs'
+          #fields:
+            #- id
+            #- username
+            #- email
+            #- { property: 'roles', label: 'Rôles', type: json_array }
         #form:
           #fields:
             #- { type: 'group', icon: 'pencil', label: 'Édition utilisateur' }
