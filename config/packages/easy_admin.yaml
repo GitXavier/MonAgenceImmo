@@ -43,8 +43,8 @@ easy_admin:
         show:
           fields:
             - titre
-            - { property: 'image_name', label: 'Image', type: 'image', base_path: '%app.path.product_images%', css_class: 'col-lg-5' }
-            - { property: 'attachments', template: 'images.html.twig', css_class: 'col-lg-5'}
+            - { property: 'image_name', label: 'Image', type: 'image', base_path: '%app.path.product_images%', css_class: 'col-lg-12' }
+            - { property: 'attachments', template: 'images.html.twig', css_class: 'col-lg-6'}
             - { property: 'description', type: 'raw' }
             - criteres
             - vendu
@@ -55,7 +55,7 @@ easy_admin:
 
         form:
           fields:
-            - { type: 'group', icon: 'pencil', label: 'Caractéristiques du bien' }
+            - { type: 'group', icon: 'pencil', label: 'Caractéristiques du bien', css_class: 'col-lg-12' }
             - titre
             - surface
             - pieces
@@ -63,7 +63,7 @@ easy_admin:
             - chauffage
             - etages
             - { property: 'description', type: 'fos_ckeditor', type_options: { config_name: 'main_config' }}
-            - { type: 'group', icon: 'clip', label: 'Image', css_class: 'col-lg-5' }
+            - { type: 'group', icon: 'clip', label: 'Image', css_class: 'col-lg-12' }
             - { property: 'imageFile', type: 'vich_image', label: 'Image'}
             - { property: 'attachments', type: 'collection', type_options: { entry_type: 'App\Form\AttachmentType', by_reference: false }}
             #- created_at
