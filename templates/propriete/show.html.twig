@@ -33,8 +33,8 @@
                     <h2>{{ propriete.pieces }} pièces - {{ propriete.surface }} m2</h2>
                     <div class="text-danger" style="font-weight: bold; font-size: 2rem">{{ propriete.formattedPrix }}€
                     </div>
-                    <a href="#" class="btn btn-default">Contacter l'agence</a>
-                    <div id="contactForm" class="mt-4">
+                    <a href="#" class="btn btn-default" id="contactButton"{% if form.vars.submitted %} style="display: none;"{% endif %}>Contacter l'agence</a>
+                    <div id="contactForm" class="mt-4"{% if not form.vars.submitted %} style="display: none;"{% endif %}>
                         {{ form_start(form) }}
                         <div class="row">
                             <div class="col">{{ form_row(form.firstname) }}</div>
