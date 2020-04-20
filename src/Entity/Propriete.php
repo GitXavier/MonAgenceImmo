@@ -14,10 +14,9 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProprieteRepository")
  * @UniqueEntity("titre")
  * @Vich\Uploadable
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ProprieteRepository")
  */
 class Propriete
 {
@@ -29,20 +28,17 @@ class Propriete
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @var string|null
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imageName;
 
     /**
      * @Vich\UploadableField(mapping="product_images", fileNameProperty="imageName")
-     * @Assert\Image(mimeTypes="image/jpeg")
-     * @var File
      */
     private $imageFile;
 
     /**
-     * @ORM\OneToMany(targetEntity="Attachment", mappedBy="propriete", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Attachment", mappedBy="propriete", orphanRemoval=true, cascade={"persist"})
      */
     private $attachments;
 
@@ -356,11 +352,8 @@ class Propriete
         return $this->imageName;
     }
 
-    /**
-     * @param string|null $imageName
-     * @return Propriete
-     */
-    public function setImageName(?string $imageName): Propriete
+
+    public function setImageName(?string $imageName): self
     {
         $this->imageName = $imageName;
         return $this;
@@ -419,6 +412,14 @@ class Propriete
     public function getAttachments(): Collection
     {
         return $this->attachments;
+    }
+
+    public function getAttachment(): ?Attachment
+    {
+        if ($this->attachments->isEmpty()) {
+            return null;
+        }
+        return $this->attachments->first();
     }
 
     public function addAttachment(Attachment $attachment): self

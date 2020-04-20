@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AttachmentRepository")
@@ -20,14 +22,24 @@ class Attachment
     private $id;
 
     /**
+     * @var File|null
+     * @Assert\Image(
+     *     mimeTypes="image/jpeg"
+     * )
+     * @Vich\UploadableField(mapping="product_attachments", fileNameProperty="image")
+     */
+    private $imageFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $image;
 
     /**
-     * @Vich\UploadableField(mapping="product_attachments", fileNameProperty="image")
+     * @ORM\ManyToOne(targetEntity="Propriete", inversedBy="attachments")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $imageFile;
+    private $propriete;
 
     /**
      * @ORM\Column(type="datetime")
@@ -39,16 +51,6 @@ class Attachment
      */
     private $updatedAt;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Propriete", inversedBy="attachments")
-     */
-    private $propriete;
-
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
-    }
 
     public function getId(): ?int
     {
@@ -60,11 +62,50 @@ class Attachment
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
         return $this;
+    }
+
+    public function getPropriete(): ?Propriete
+    {
+        return $this->propriete;
+    }
+
+    public function setPropriete(?Propriete $propriete): self
+    {
+        $this->propriete = $propriete;
+
+        return $this;
+    }
+
+    /**
+     * @return null|File
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param null|File $imageFile
+     * @return self
+     */
+    public function setImageFile(?File $imageFile): self
+    {
+        $this->imageFile = $imageFile;
+        if ($imageFile) {
+            $this->updatedAt = new \DateTime();
+        }
+        return $this;
+    }
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
@@ -91,35 +132,4 @@ class Attachment
         return $this;
     }
 
-    public function getPropriete(): ?Propriete
-    {
-        return $this->propriete;
-    }
-
-    public function setPropriete(?Propriete $propriete): self
-    {
-        $this->propriete = $propriete;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param mixed $imageFile
-     * @throws \Exception
-     */
-    public function setImageFile(?File $imageFile): void
-    {
-        $this->imageFile = $imageFile;
-        if ($imageFile) {
-            $this->updatedAt = new \DateTime();
-        }
-    }
 }

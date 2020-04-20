@@ -5,6 +5,7 @@ namespace App\Form;
 
 
 use App\Entity\Contact;
+use Grafikart\RecaptchaBundle\Type\RecaptchaSubmitType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -41,8 +42,9 @@ class ContactType extends AbstractType
             ->add('message', TextareaType::class, [
                 'label'=> false,
                 'attr' => [
-                    'placeholder' => 'Méssage']
+                    'placeholder' => 'Message']
             ])
+
         ;
      }
 

@@ -32,6 +32,7 @@ class ProprieteType extends AbstractType
             ])
             ->add('imageFile', FileType::class, [
                 'required' => false,
+                'multiple' => true
             ])
             ->add('prix')
             ->add('adresse')

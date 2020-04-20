@@ -20,6 +20,7 @@
 
             <div class="row">
                 <div class="col-md-8">
+                    <div data-slider>
                     {% if propriete.imagename %}
                         <img src="{{ vich_uploader_asset(propriete, 'imageFile') | imagine_filter('medium') }}"
                              alt="card-img-top" style="width: 100%; height: auto">
@@ -28,13 +29,14 @@
                              alt="card-img-top" style="width: 100%; height: auto">
                     {% endif %}
                 </div>
+            </div>
                 <div class="col-md-4">
                     <h1>{{ propriete.titre }}</h1>
                     <h2>{{ propriete.pieces }} pièces - {{ propriete.surface }} m2</h2>
                     <div class="text-danger" style="font-weight: bold; font-size: 2rem">{{ propriete.formattedPrix }}€
                     </div>
                     <a href="#" class="btn btn-default" id="contactButton"{% if form.vars.submitted %} style="display: none;"{% endif %}>Contacter l'agence</a>
-                    <div id="contactForm" class="mt-4"{% if not form.vars.submitted %} style="display: none;"{% endif %}>
+                    <div id="contactForm" class="mt-4"{% if not form.vars.submitted %} style="display: block;"{% endif %}>
                         {{ form_start(form) }}
                         <div class="row">
                             <div class="col">{{ form_row(form.firstname) }}</div>
@@ -55,7 +57,6 @@
         </div>
     </div>
     <div class="container mt-4">
-
         <div class="col-md-12">
             <p>
                 {{ propriete.description | raw }}
