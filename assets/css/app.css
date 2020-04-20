@@ -1,8 +1,3 @@
-@import "icomoonfree.css";
-
-@import "style.css";
-@import "./include/cardProperties.css";
-
-
-
-
+body {
+    background-color: lightgray;
+}

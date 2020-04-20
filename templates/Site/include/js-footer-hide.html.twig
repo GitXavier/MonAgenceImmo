@@ -1,0 +1,15 @@
+<script type="text/javascript">
+    function btnFooterHide(){
+        if($('.js-footer-hide').hasClass('opened')){
+            $('.js-footer-hide').removeClass('opened');
+            $('.btn-hide').removeClass('fa-minus');
+            $('.btn-hide').addClass('fa-plus');
+
+
+        }else{
+            $('.js-footer-hide').addClass('opened');
+            $('.btn-hide').removeClass('fa-plus');
+            $('.btn-hide').addClass('fa-minus');
+        }
+    }
+</script>
