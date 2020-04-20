@@ -14,18 +14,34 @@ Encore
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
 
+
     .copyFiles({
-            from: './assets/images',
+        from: './assets/images',
 
-            // optional target path, relative to the output dir
-            //to: 'images/[path][name].[ext]',
+        // optional target path, relative to the output dir
+        //to: 'images/[path][name].[ext]',
 
-            // if versioning is enabled, add the file hash too
-            to: 'images/[path][name].[hash:8].[ext]',
+        // if versioning is enabled, add the file hash too
+        to: 'images/[path][name].[hash:8].[ext]',
 
-            // only copy files matching this pattern
-            //pattern: /\.(png|jpg|jpeg)$/
+        // only copy files matching this pattern
+        //pattern: /\.(png|jpg|jpeg)$/
     })
+
+    .copyFiles({
+        from: './assets/Dist',
+
+        // optional target path, relative to the output dir
+        to: 'assets/dist/[path][name].[ext]',
+
+        // if versioning is enabled, add the file hash too
+        // to: 'images/[path][name].[hash:8].[ext]',
+
+        // only copy files matching this pattern
+        //pattern: /\.(png|jpg|jpeg)$/
+    })
+
+
 
     /*
      * ENTRY CONFIG
