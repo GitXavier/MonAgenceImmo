@@ -1,0 +1,138 @@
+{% extends 'base_site.html.twig' %}
+{% block body %}
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="south-load"></div>
+    </div>
+
+    <!-- Top and NavBar -->
+    <header class="header-area">
+        {% include 'Site/include/headerTop.html.twig' %}
+        {% include 'Site/include/headerNavBar.html.twig' %}
+    </header>
+
+
+    <!-- Carousel -->
+    <section class="hero-area">
+        <div class="header-slide-parallax" ></div>
+    </section>
+
+
+    <!-- Search Area -->
+    <section class="south-search-area" >
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="advanced-search-form" style="">
+                        <!-- Search Title -->
+                        <div class="search-title">
+                            <p>Trouver la maison de vos rêves</p>
+                        </div>
+                        <!-- Search Form -->
+                        {% include 'Site/include/searchForm.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Search Area End -->
+
+    <!-- Services Area Start -->
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading wow fadeInUp">
+                        <h2>Profitez de notre savoir-faire</h2>
+                        <p>Que votre projet immobilier porte sur une transaction, une location, ou une délégation de gestion locative,
+                            <br>notre agence Immobilière est a votre écoute.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                {% include 'Site/include/_cardService.html.twig' %}
+            </div>
+        </div>
+    </section>
+    <!-- Services Area End -->
+
+    <!-- Card Properties Area Start -->
+    <section class=" section-padding-50-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading wow fadeInUp">
+                        <h2>Des nouveaux biens pour vous</h2>
+                        <p>Vous souhaitez louer ou acheter une maison, une appartement, un commerce ? Parcourez nos annonces. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Card Properties -->
+                {% include 'Site/include/_CardProperty.html.twig' %}
+            </div>
+        </div>
+    </section>
+    <!-- Card Properties Area End  -->
+
+    <!-- Section éstimation -->
+    <section class="call-to-action-area bg-fixed bg-overlay-black" style="background-image: url({{asset('build/images/bg-img/cta.jpg')}})">
+        <div class="container h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-12">
+                    <div class="cta-content text-center">
+                        <h1 style="color:white" class="wow fadeInUp" data-wow-delay="300ms">Vous désirez une éstimation de votre bien immobilier.</h1>
+                        <a href="#" class="btn south-btn mt-50 wow fadeInUp" data-wow-delay="500ms">estimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section éstimation End -->
+
+    <!-- Testimonials Area Start -->
+    <section class="south-testimonials-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading wow fadeInUp" data-wow-delay="250ms">
+                        <h2>Témoignages</h2>
+                        <p>Nos clients nous font confiance et ils nous l'écrivent</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="testimonials-slides-one owl-carousel wow fadeInUp" data-wow-delay="500ms">
+                        <!-- Card Testimonial Slide -->
+                        {% include 'Site/include/_CardTestimonial-one.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Area End -->
+
+
+    <!-- bouton plus Footer Area Start -->
+    <div class="d-flex justify-content-center btn-footer-hide">
+        <button type="button" onclick="btnFooterHide();return false;"><i class="btn-hide fa fa-plus"></i></button>
+    </div>
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area section-padding-20 bg-img gradient-background-overlay">
+
+        <div class="js-footer-hide">
+            <!-- footer Text -->
+            {% include 'Site/include/footer/_footer_1.html.twig' %}
+        </div>
+
+        <!-- Copywrite Text -->
+        {% include 'Site/include/_bottomCopyright.html.twig' %}
+    </footer>
+    <!-- Footer Area End  -->
+
+    {% include 'Site/include/js-footer-hide.html.twig' %}
+
+{% endblock %}

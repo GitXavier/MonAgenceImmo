@@ -1,6 +1,6 @@
 {
     "devDependencies": {
-        "@symfony/webpack-encore": "^0.28.2",
+        "@symfony/webpack-encore": "^0.28.3",
         "bootstrap": "^4.4.1",
         "core-js": "^3.0.0",
         "node-sass": "^4.13.1",
@@ -20,6 +20,9 @@
     "dependencies": {
         "ckeditor": "^4.0.0",
         "jquery": "^3.4.1",
-        "select2": "^4.0.13"
-    }
+        "select2": "^4.0.13",
+        "scrollreveal": "^4.0.6",
+        "slick-carousel": "^1.8.1"
+    },
+    "version": "0.0.0"
 }

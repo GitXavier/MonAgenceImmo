@@ -1,0 +1,197 @@
+{% extends 'base_site.html.twig' %}
+{% block body %}
+
+    <style>
+
+        .property-gallery{
+            padding: 0px;
+            max-width: 900px;
+        }
+
+        .property-gallery-slide {
+            /*border: 3px solid red;*/
+
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 572px;
+            position: relative;
+            display: none;
+        }
+
+        .Thumbnails {
+            /*border: #5f3f3f 3px solid;*/
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            /*justify-content: center;*/
+            flex-wrap: wrap;
+            height: 600px;
+            /*overflow: scroll;*/
+
+        }
+
+        .Thumbnails img {
+            /*display: none;*/
+            max-width: 100px;
+
+            opacity: 0.6;
+        }
+
+        .Thumbnails img:hover {
+            /*display: none;*/
+            max-width: 100px;
+            opacity: 1;
+
+        }
+
+        /*.property-thumbnail {*/
+        /*    margin: 0px;*/
+        /*}*/
+
+        .property-thumbnail {
+            cursor: pointer;
+            margin:5px;
+        }
+
+        .property-gallery a,
+        .property-gallery:hover{
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+
+
+        /* Next & previous buttons */
+        .property-prev,
+        .property-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .property-next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .property-prev:hover,
+        .property-next:hover {
+            background-color: rgba(148, 112, 84, 0.8);
+        }
+
+        .property-slide-parallax {
+            min-height: 400px;
+            background-attachment: fixed;
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+    </style>
+
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="south-load"></div>
+    </div>
+
+    <!-- Top and NavBar -->
+    <header class="header-area">
+        {% include 'Site/include/headerTop.html.twig' %}
+        {% include 'Site/include/headerNavBar.html.twig' %}
+    </header>
+
+    <!-- Side -->
+    <section class="hero-area section-padding-0-100">
+        <div class="property-slide-parallax " style="background-image: url('{{asset('build/images/bg-img/feature1.90201ff9.jpg')}}');"></div>
+    </section>
+
+    <!-- Search Area -->
+    <section class="south-search-area" >
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="advanced-search-form" style="top:-300px">
+                        <div class="container-fluid " style="margin-top: 20px" >
+                            <div class="row justify-content-center">
+                                <div class="col-10 property-gallery" style="">
+                                    <div class="property-gallery-slide" style="background-image: url('{{asset('build/images/bg-img/feature1.90201ff9.jpg')}}');"></div>
+                                    <div class="property-gallery-slide" style="background-image: url('{{asset('build/images/bg-img/feature8.965af860.jpg')}}');"></div>
+                                    <div class="property-gallery-slide" style="background-image: url('{{asset('build/images/bg-img/feature3.4bed2344.jpg')}}');"></div>
+                                    <div class="property-gallery-slide" style="background-image: url('{{asset('build/images/bg-img/feature4.ef4ca563.jpg')}}');"></div>
+                                    <div class="property-gallery-slide" style="background-image: url('{{asset('build/images/bg-img/feature5.b1a30f2c.jpg')}}');"></div>
+                                    <div class="property-gallery-slide" style="background-image: url('{{asset('build/images/bg-img/feature6.2191f756.jpg')}}');"></div>
+                                    <div class="property-gallery-slide" style="background-image: url('{{asset('build/images/bg-img/feature7.f3787324.jpg')}}');"></div>
+
+                                    <a class="property-prev" onclick="plusSlides(-1)">❮</a>
+                                    <a class="property-next" onclick="plusSlides(1)">❯</a>
+                                </div>
+
+                                <div class="col-1 Thumbnails" style="margin-right: 33px; ">
+                                    <img class="property-thumbnail" src="{{asset('build/images/bg-img/feature1.90201ff9.jpg')}}" onclick="currentSlide(1)" alt="">
+                                    <img class="property-thumbnail" src="{{asset('build/images/bg-img/feature8.965af860.jpg')}}" onclick="currentSlide(2)" alt="">
+                                    <img class="property-thumbnail" src="{{asset('build/images/bg-img/feature3.4bed2344.jpg')}}" onclick="currentSlide(3)" alt="">
+                                    <img class="property-thumbnail" src="{{asset('build/images/bg-img/feature4.ef4ca563.jpg')}}" onclick="currentSlide(4)" alt="">
+                                    <img class="property-thumbnail" src="{{asset('build/images/bg-img/feature5.b1a30f2c.jpg')}}" onclick="currentSlide(5)" alt="">
+                                    <img class="property-thumbnail" src="{{asset('build/images/bg-img/feature6.2191f756.jpg')}}" onclick="currentSlide(6)" alt="">
+                                    <img class="property-thumbnail" src="{{asset('build/images/bg-img/feature7.f3787324.jpg')}}" onclick="currentSlide(7)" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Search Area End -->
+
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+
+            let slides = document.getElementsByClassName("property-gallery-slide");
+            let dots = document.getElementsByClassName("property-thumbnail");
+
+            if (n > slides.length) {slideIndex = 1}
+
+            if (n < 1) {slideIndex = slides.length}
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
+
+
+
+
+
+
+{% endblock %}

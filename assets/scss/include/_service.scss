@@ -1,0 +1,53 @@
+/* :: Services CSS */
+
+
+.card-service {
+  max-width: 500px;
+
+  .service_box {
+    border: 2px solid $bg-default;
+    padding: 0 20px 15px 80px;
+    position: relative;
+    background-color: $color-white;
+    min-height: 188px;
+
+    h3 {
+      border-bottom: 1px solid $bg-default;
+      color: $bg-default;
+      font-weight: normal;
+      padding-bottom: 10px;
+      font-size: 18px;
+      margin-top: 5px;
+    }
+
+    .icon_box {
+      background-color: $bg-default;
+      height: 60px;
+      left: -2px;
+      padding: 20px;
+      position: absolute;
+      top: -2px;
+      width: 60px;
+      &:after {
+        bottom: -8px;
+        content: "";
+        height: 0px;
+        border-style: solid;
+        border-width: 0 8px 8px 0;
+        border-color: transparent $bg-default transparent transparent;
+        position: absolute;
+        right: 0;
+        width: 0px;
+      }
+
+      .fa {
+        color: #fff;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+
+
+

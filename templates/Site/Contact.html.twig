@@ -1,0 +1,102 @@
+{% extends 'base_site.html.twig' %}
+{% block body %}
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="south-load"></div>
+    </div>
+
+    <!-- Top and NavBar -->
+    <header class="header-area">
+        {% include 'Site/include/headerTop.html.twig' %}
+        {% include 'Site/include/headerNavBar.html.twig' %}
+    </header>
+
+
+    <!-- slide-->
+    <section class="breadcumb-area bg-img" style="background-image: url({{ asset('build/images/bg-img/hero1.a92d7773.jpg') }}">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-content">
+                        <h3 class="breadcumb-title">Contact</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="south-contact-area section-padding-100">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="content-sidebar">
+                        <!-- Office Hours -->
+                        <div class="weekly-office-hours">
+                            <ul>
+                                <li class="d-flex align-items-center justify-content-between"><span>Lundi - Vendredi</span> <span>09h00 - 12h30 / 14h00 - 19h00</span></li>
+                                <li class="d-flex align-items-center justify-content-between"><span>Samedi</span> <span>09h - 14h</span></li>
+                                <li class="d-flex align-items-center justify-content-between"><span>Dimanche</span> <span>Fermé</span></li>
+                            </ul>
+                        </div>
+                        <!-- Address -->
+                        <div class="address mt-30">
+                            <h6><img src="{{ asset('build/images/icons/phone-call.c70b72d0.png') }}" alt="">05 56 00 00 00</h6>
+                            <h6><img src="{{ asset('build/images/icons/envelope.2899d2b1.png') }}" alt="">hello@agence.com</h6>
+                            <h6><img src="{{ asset('build/images/icons/location.3758247b.png') }}" alt="">Avenue de la libération 33000 Bordeaux</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="contact-form">
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="text" id="contact-name" placeholder="Votre Nom">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="text" id="contact-phone" placeholder="Téléphone">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" id="contact-email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" id="contact-message" cols="30" rows="10" placeholder="Votre Message"></textarea>
+                            </div>
+                            <button type="submit" class="btn south-btn">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  Editor Area  -->
+    <section class="south-editor-area d-flex align-items-center">
+        <!-- Editor Content -->
+        {% include 'Site/include/edito.html.twig' %}
+    </section>
+
+    <div class="d-flex justify-content-center btn-footer-hide">
+        <button type="button" onclick="btnFooterHide();return false;"><i class="btn-hide fa fa-plus"></i></button>
+    </div>
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area section-padding-20 bg-img gradient-background-overlay">
+
+        <div class="js-footer-hide">
+            <!-- footer Text -->
+            {% include 'Site/include/footer/_footer_1.html.twig' %}
+        </div>
+
+        <!-- Copywrite Text -->
+        {% include 'Site/include/_bottomCopyright.html.twig' %}
+    </footer>
+    <!-- Footer Area End  -->
+
+    {% include 'Site/include/js-footer-hide.html.twig' %}
+
+
+{% endblock %}

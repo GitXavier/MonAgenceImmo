@@ -1,0 +1,79 @@
+{% extends 'base_site.html.twig' %}
+{% block body %}
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="south-load"></div>
+    </div>
+
+    <!-- Top and NavBar -->
+    <header class="header-area">
+        {% include 'Site/include/headerTop.html.twig' %}
+        {% include 'Site/include/headerNavBar.html.twig' %}
+    </header>
+
+
+    <!-- Carousel -->
+    <section class="hero-area">
+        <div class="header-slide-parallax" ></div>
+    </section>
+
+
+    <!-- Search Area -->
+    <section class="south-search-area" >
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="advanced-search-form" style="">
+                        <!-- Search Title -->
+                        <div class="search-title">
+                            <p>Trouver la maison de vos rêves</p>
+                        </div>
+                        <!-- Search Form -->
+                        {% include 'Site/include/searchForm.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Search Area End -->
+
+    <!-- Card Properties Area Start -->
+    <section class=" section-padding-50-50">
+        <div class="container">
+{#            <div class="row">#}
+{#                <div class="col-12">#}
+{#                    <div class="section-heading wow fadeInUp">#}
+{#                        <h2>Des nouveaux biens pour vous</h2>#}
+{#                        <p>Vous souhaitez louer ou acheter une maison, une appartement, un commerce ? Parcourez nos annonces. </p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+            <div class="row">
+                <!-- Card Properties -->
+                {% include 'Site/include/_CardProperty.html.twig' %}
+            </div>
+        </div>
+    </section>
+    <!-- Card Properties Area End  -->
+
+    <!-- bouton plus Footer Area Start -->
+    <div class="d-flex justify-content-center btn-footer-hide">
+        <button type="button" onclick="btnFooterHide();return false;"><i class="btn-hide fa fa-plus"></i></button>
+    </div>
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area section-padding-20 bg-img gradient-background-overlay">
+
+        <div class="js-footer-hide">
+            <!-- footer Text -->
+            {% include 'Site/include/footer/_footer_1.html.twig' %}
+        </div>
+
+        <!-- Copywrite Text -->
+        {% include 'Site/include/_bottomCopyright.html.twig' %}
+    </footer>
+    <!-- Footer Area End  -->
+
+    {% include 'Site/include/js-footer-hide.html.twig' %}
+
+{% endblock %}
